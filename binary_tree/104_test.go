@@ -43,7 +43,7 @@ func maxDepth(root *common.TreeNode) int {
 }
 
 /**
-非递归的DFS
+非递归的BFS
 */
 func maxDepth1(root *common.TreeNode) int {
 	if root == nil {
@@ -79,18 +79,17 @@ func maxDepth1(root *common.TreeNode) int {
 	return deep
 }
 
-var rootNode = &common.TreeNode{
-	Val:  3,
-	Left: &common.TreeNode{Val: 9},
-	Right: &common.TreeNode{
-		Val:   20,
-		Left:  &common.TreeNode{Val: 15},
-		Right: &common.TreeNode{Val: 7},
-	},
-}
-
 func Test_maxDepth(t *testing.T) {
 	//[3,9,20,null,null,15,7]，
+	var rootNode = &common.TreeNode{
+		Val:  3,
+		Left: &common.TreeNode{Val: 9},
+		Right: &common.TreeNode{
+			Val:   20,
+			Left:  &common.TreeNode{Val: 15},
+			Right: &common.TreeNode{Val: 7},
+		},
+	}
 
 	expect := 3
 
@@ -100,6 +99,15 @@ func Test_maxDepth(t *testing.T) {
 }
 
 func Benchmark_Test_maxDepth(b *testing.B) {
+	var rootNode = &common.TreeNode{
+		Val:  3,
+		Left: &common.TreeNode{Val: 9},
+		Right: &common.TreeNode{
+			Val:   20,
+			Left:  &common.TreeNode{Val: 15},
+			Right: &common.TreeNode{Val: 7},
+		},
+	}
 	for i := 0; i < b.N; i++ {
 		maxDepth(rootNode)
 	}
@@ -107,6 +115,15 @@ func Benchmark_Test_maxDepth(b *testing.B) {
 
 func Test_maxDepth1(t *testing.T) {
 	//[3,9,20,null,null,15,7]，
+	var rootNode = &common.TreeNode{
+		Val:  3,
+		Left: &common.TreeNode{Val: 9},
+		Right: &common.TreeNode{
+			Val:   20,
+			Left:  &common.TreeNode{Val: 15},
+			Right: &common.TreeNode{Val: 7},
+		},
+	}
 
 	expect := 3
 	out := maxDepth1(rootNode)
